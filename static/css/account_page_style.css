@@ -1,0 +1,254 @@
+html, body {
+  height: 100%; /*外層高度100%*/
+  margin: 0;
+}
+
+.web_body{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.contain{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+    flex-direction: column;
+    flex-grow: 1; /*可佔滿垂直剩餘的空間*/
+    justify-content: center;
+}
+
+.content{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding-top: 50px;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; /*可佔滿垂直剩餘的空間*/
+}
+
+.user_info{
+    display: flex;
+    height: auto;
+    width: 100%;
+    justify-content: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.user_info_background{
+    display: flex;
+    height: 200px;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    box-shadow:  1px 1px 5px rgb(190, 190, 190);
+    align-items: center;
+}
+
+.user_name_group_name_div{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.user_name_group_name_title{
+    display: flex;
+    font-weight: bolder;
+    font-family: 'Noto Sans TC';
+}
+.user_name_group_name_text{
+    display: flex;
+    font-family: 'Noto Sans TC';
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.user_name_group_email_div{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding-left: 30px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.user_name_group_email_title{
+    display: flex;
+    font-weight: bolder;
+    font-family: 'Noto Sans TC';
+}
+
+.user_name_group_email_text{
+    display: flex;
+    font-family: 'Noto Sans TC';
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+
+.user_order_and_message{
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 700px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.user_order{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user_order_title{
+    font-weight: bolder;
+    font-family: 'Noto Sans TC';
+    padding-left: 10px;
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.user_order_content{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+    box-shadow:  1px 1px 5px rgb(127, 127, 127);
+    overflow: scroll;
+    padding-top: 10px;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order_background{
+    display: flex;
+    width: 90%;
+    height: 80px;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: rgb(245, 245, 247);
+    box-shadow:  1px 1px 5px rgb(127, 127, 127);
+}
+
+.order_del_butt_div{
+    display: flex;
+    width:100%;
+}
+
+.order_del_butt{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Noto Sans TC';
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    cursor: pointer;
+}
+
+.order_del_butt:hover{
+    font-size: 25px;
+}
+
+.order_name_div{
+    display: flex;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.order_name_div_title{
+    display: flex;
+    padding-left: 40px;
+    box-sizing: border-box;
+    font-weight: bolder;
+    font-family: 'Noto Sans TC';
+}
+
+.order_name_div_text{
+    display: flex;
+    /* width: 100%; */
+    flex-grow: 1;
+}
+
+.order_select_butt{
+    display: flex;
+    width: 60px;
+    border: 0;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-family: 'Noto Sans TC';
+    background-color: rgb(246, 207, 108);
+    box-shadow:  1px 1px 5px rgb(127, 127, 127);
+    cursor: pointer;
+}
+
+.order_builed_time{
+    display: flex;
+    justify-content: end;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+
+}
+
+
+
+
+
+
+.user_message{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user_message_title{
+    font-weight: bolder;
+    font-family: 'Noto Sans TC';
+    padding-left: 10px;
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.user_message_content{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+    box-shadow:  1px 1px 5px rgb(127, 127, 127);
+    overflow: scroll;
+}
+
+
+
+
+
+
+

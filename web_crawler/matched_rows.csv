@@ -1,0 +1,7 @@
+,id,name,cores,brand,socket_type,price,matched_name,benchmark_score,benchmark_rank,benchmark_value,benchmark_price
+0,18,Intel Processor 300,2,Intel,1700,2680.0,0,AArch64,833,4213,
+1,41,Intel Xeon W5-2455X,12,Intel,4677,36700.0,0,AArch64,833,4213,
+2,42,Intel Xeon W5-2465X,16,Intel,4677,47900.0,0,AArch64,833,4213,
+3,43,Intel Xeon W5-3435X,16,Intel,4677,56500.0,0,AArch64,833,4213,
+4,44,Intel Xeon W7-3465X,28,Intel,4677,100500.0,0,AArch64,833,4213,
+5,45,Intel Xeon W9-3475X,36,Intel,4677,132500.0,0,AArch64,833,4213,
