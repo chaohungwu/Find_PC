@@ -9,7 +9,6 @@ async function get_order_data() {
     })
     let data = await response.json();
 
-
     try{
         document.querySelector(".user_order_content").remove()
 
@@ -73,8 +72,6 @@ async function get_order_data() {
     
 }
 
-
-
 get_order_data()
 
 
@@ -86,3 +83,123 @@ async function read_order_data() {
     window.location.href=`/order?number=${order_id}`
 
 }
+
+
+// 跳轉到那個配單的頁面
+async function read_order_data() {
+    
+    let order_id = this.value;
+    console.log(order_id)
+    window.location.href=`/order?number=${order_id}`
+
+}
+
+async function to_message_page() {
+    let message_id = this.value;
+    // console.log(message_id)
+    window.location.href=`/message/${message_id}`
+
+}
+
+
+
+async function get_message_data() {
+    let response = await fetch(`/api/MessageDataByUserID`,
+    {
+        method:'GET',
+        headers: {
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    let MessageData = await response.json();
+
+    console.log(MessageData)
+
+    for(let i=0; i<MessageData.length; i++){
+        // console.log(i)
+        // 
+        let MessageData_background = document.createElement("div")
+        MessageData_background.className='MessageData_background'
+        MessageData_background.id=`MessageData_background_${i}`
+        document.querySelector(".user_message_content").appendChild(MessageData_background)
+
+        //
+        let MessageData_del_butt_div = document.createElement("div")
+        MessageData_del_butt_div.className='MessageData_del_butt_div'
+        MessageData_del_butt_div.id=`MessageData_del_butt_div_${i}`
+        MessageData_background.appendChild(MessageData_del_butt_div)
+
+        // 
+        let MessageData_del_butt = document.createElement("button")
+        MessageData_del_butt.className='MessageData_del_butt'
+        MessageData_del_butt.id=`MessageData_del_butt_${i}`
+        MessageData_del_butt.textContent='x'
+        MessageData_del_butt_div.appendChild(MessageData_del_butt)
+
+        // 
+        let MessageData_name_div = document.createElement("div")
+        MessageData_name_div.className='MessageData_name_div'
+        MessageData_name_div.id=`MessageData_name_div_${i}`
+        MessageData_background.appendChild(MessageData_name_div)
+
+        // 
+        let MessageData_name_div_title = document.createElement("div")
+        MessageData_name_div_title.className='MessageData_name_div_title'
+        MessageData_name_div_title.id=`MessageData_name_div_title_${i}`
+        MessageData_name_div_title.textContent='討論標題：'
+        MessageData_name_div.appendChild(MessageData_name_div_title)
+
+        // 
+        let MessageData_name_div_text = document.createElement("div")
+        MessageData_name_div_text.className='MessageData_name_div_text'
+        MessageData_name_div_text.id=`MessageData_name_div_text_${i}`
+        MessageData_name_div_text.textContent=`${MessageData[i]['title']}`
+        MessageData_name_div.appendChild(MessageData_name_div_text)
+
+        // 
+        let MessageData_select_butt = document.createElement("button")
+        MessageData_select_butt.className='MessageData_select_butt'
+        MessageData_select_butt.id=`MessageData_select_butt_${MessageData[i]['id']}_${i}`
+        MessageData_select_butt.value=`${MessageData[i]['id']}`
+        MessageData_select_butt.textContent='選擇'
+        MessageData_select_butt.addEventListener('click', to_message_page);
+        MessageData_name_div.appendChild(MessageData_select_butt)
+
+
+        let MessageData_builed_time = document.createElement("div")
+        MessageData_builed_time.className='MessageData_builed_time'
+        MessageData_builed_time.id=`MessageData_builed_time_${i}`
+        MessageData_builed_time.textContent = `${MessageData[i]['create_at']}`
+        MessageData_background.appendChild(MessageData_builed_time)
+
+    }
+
+}
+get_message_data()
+
+
+
+
+
+async function user_data() {
+    let response = await fetch(`/api/auth`,
+    {
+        method:'GET',
+        headers: {
+                "Authorization": `Bearer ${localStorage.getItem('token')}`
+                }
+    })
+    let singinData = await response.json();
+
+    console.log(singinData)
+    console.log(singinData['data'])
+
+    let user_name_group_email_title_dom = document.querySelector(".user_name_group_email_text")
+    user_name_group_email_title_dom.textContent = singinData['data']['email']
+    
+    let user_name_group_name_text_dom = document.querySelector(".user_name_group_name_text")
+    user_name_group_name_text_dom.textContent = singinData['data']['name']
+
+    }
+
+user_data()

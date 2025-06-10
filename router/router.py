@@ -6,6 +6,8 @@ from model.Auth import Auth
 import datetime
 
 from model.Component_Data import Component_Data
+from model.message import message
+
 from model.DB_ORM import DB_Function
 
 # from model.s3_function import s3_function
@@ -29,6 +31,146 @@ async def user_center(request: Request, userid):
 	return FileResponse("./static/account_page.html", media_type="text/html")
 
 
+# 留言板畫面
+@router.get("/messageboard", include_in_schema=False)
+async def user_center(request: Request):
+	return FileResponse("./static/messageboard.html", media_type="text/html")
+
+# 會員中心畫面
+@router.get("/message/{messageid}", include_in_schema=False)
+async def user_center(request: Request, messageid):
+	return FileResponse("./static/message.html", media_type="text/html")
+
+# 跑分排行畫面
+@router.get("/rank", include_in_schema=False)
+async def compenment_rank(request: Request):
+	return FileResponse("./static/beanchmark_score.html", media_type="text/html")
+
+################### 留言 ##################
+# 所有留言討論
+@router.get("/api/MessageData", include_in_schema=False)
+async def MessageData(Authorization: str = Header(None)):
+    try:
+        # accountFunction=Auth()
+        # Auth_result = accountFunction.authenticator(Authorization)
+        datafunction = message()
+        all_data_dict = datafunction.GetMessageData()
+		
+        return all_data_dict
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+# 以ID查留言(使用者PAGE使用)
+@router.get("/api/MessageDataByMessageID", include_in_schema=False)
+async def MessageDataByMessageID(message_id:str, Authorization: str = Header(None)):
+    try:
+        datafunction = message()
+        all_data_dict = datafunction.GetMessageDataByMessageID(message_id)
+        return all_data_dict
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+
+# 以ID查留言(使用者PAGE使用)
+@router.get("/api/MessageDataByUserID", include_in_schema=False)
+async def MessageDataByUserID(Authorization: str = Header(None)):
+    try:
+        accountFunction=Auth()
+        Auth_result = accountFunction.authenticator(Authorization)
+        print(Auth_result)
+        user_id = Auth_result['data']['id']
+
+        datafunction = message()
+        all_data_dict = datafunction.GetMessageDataByUserID(user_id)
+		
+        return all_data_dict
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+
+
+# 取得留言的回覆資料
+@router.get("/api/MessageResponseData", include_in_schema=False)
+async def MessageResponseData(message_id:str,Authorization: str = Header(None)):
+    try:
+        # accountFunction=Auth()
+        # Auth_result = accountFunction.authenticator(Authorization)
+        # print(Auth_result)
+        # user_id = Auth_result['data']['id']
+
+        datafunction = message()
+        all_data_dict = datafunction.GetMessageResponseData(message_id)
+		
+        return all_data_dict
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+
+# 新增留言資料
+@router.post("/api/InsertMessageData", include_in_schema=False)
+async def MessageResponseData(body = Body(None), Authorization: str = Header(None)):
+    try:
+        accountFunction=Auth()
+        Auth_result = accountFunction.authenticator(Authorization)
+        # print(Auth_result)
+        user_id = Auth_result['data']['id']
+        data = json.loads(body)
+
+        title_text = data['title']
+        message_text = data['message']
+
+        datafunction = message()
+        datafunction.InsertMessage(title_text,message_text,user_id)
+		
+        return {"ok":True,}
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+
+# 新增留言回覆資料
+@router.post("/api/InsertMessageResponseData", include_in_schema=False)
+async def MessageResponseData(body = Body(None), Authorization: str = Header(None)):
+    try:
+        accountFunction=Auth()
+        Auth_result = accountFunction.authenticator(Authorization)
+        # print(Auth_result)
+        user_id = Auth_result['data']['id']
+        data = json.loads(body)
+
+        response_text = data['response_text']
+        message_id = data['message_id']
+        # print(response_text)
+        # print(message_id)
+
+        datafunction = message()
+        datafunction.InsertMessageResponse(user_id,message_id,response_text)
+		
+        return {"ok":True,}
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+
+
+
+################## 功能 ##################
 # 會員登入
 @router.put("/api/user_signin", include_in_schema=False)
 async def user_signin(request: Request, body = Body(None)):

@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find-PC</title>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans TC' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/messageboard_style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/nav.css">
     <link rel="stylesheet" type="text/css" href="/static/css/account.css">
     <script defer src="/static/js/base_fun.js"></script>
     <script defer src="/static/js/account.js"></script>
     <script defer src="/static/js/component_price_table.js"></script>
+    <script defer src="/static/js/messageboard_fun.js"></script>
 
     
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
@@ -47,42 +48,55 @@
 
         <div class="contain">
             <div class="content">
-                <div class="left_content">
 
-                    <div class="left_content_top">
-                        <div class="left_content_top__slogan">
-                            簡單快速<br>
-                            取得最符合你需求的硬體
+                <!-- <div class="top_content">
+
+
+                    <div class="top_content_background">
+                        <div class="search_input_div">
+                            <div class="search_input_title">標題搜尋：</div>
+                            <input class="search_input">
                         </div>
-                        <button class="build_order_button" onclick="build_order()">硬體簡易快速配單</button>
-                    </div>
-                    
-                    <div class="left_content_bottom">
-                        <div class="left_content_bottom__title">
-                            <div class="left_content_bottom__text">硬體價格表</div>
-                            <!-- <div class="left_content_bottom__updatatime">最近更新時間</div> -->
-                        </div>
-                        <div class="left_content_bottom__button_group">
-                            <button class="price_button" onclick= "show_component_price_table_CPU()" >CPU</button>
-                            <button class="price_button" onclick= "show_component_price_table_MB()" >主機板</button>
-                            <button class="price_button" onclick= "show_component_price_table_GPU()">GPU</button>
-                            <button class="price_button" onclick= "show_component_price_table_RAM()">RAM</button>
-                            <button class="price_button" onclick= "show_component_price_table_storage()">硬碟</button>
-                            <button class="price_button" onclick= "show_component_price_table_cooler()">散熱</button>
-                            <button class="price_button" onclick= "show_component_price_table_PSU()">PSU</button>
-                            <button class="price_button" onclick= "show_component_price_table_case()">機殼</button>
+
+                        <div class="search_butt_div">
+                            <button class="search_butt">搜尋</button>
                         </div>
                     </div>
 
+
+                </div> -->
+
+                <div class="publish_butt_div">
+                    <div class="publish_butt_div_background">
+                        <input class="publish_butt_div_input_title" placeholder="請輸入標題...">
+                        <div class="publish_butt_div_input_text">
+                            <input class="publish_butt_div_input"  placeholder="請輸入留言內容...">
+                            <button class="publish_butt_div_butt" onclick="message_build()">送出</button>
+                        </div>
+                    </div>
+
+                    <!-- <button class="publish_butt" onclick="message_build()">建立新留言</button> -->
                 </div>
 
-                <div class="right_content">
-                    <div class="right_content__img"></div>
 
+                <div class="messageboard">
+
+                    <div class="messageboard_background">
+                        <div class="title_div">
+                            <div class="title_img">標題名稱</div>
+                            <div class="title_name">標題名稱</div>
+                            <div class="title_time">建立時間</div>
+                        </div>
+
+
+                        <!-- <div class="message_div">
+                            <div class="message_img"></div>
+                            <div class="message_title">test</div>
+                            <div class="message_time">2025.06.09</div>
+                        </div> -->
+
+                    </div>
                 </div>
-
-
-
 
 
             </div>

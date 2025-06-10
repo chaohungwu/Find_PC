@@ -344,7 +344,10 @@ async function order_save_buttCreate(){
         
         // 有登入的話，可以直接儲存
         }else{
-            document.querySelector(".login_hint_text").style.display = "None";
+
+            try{
+                document.querySelector(".login_hint_text").style.display = "None";
+            }catch{}
             document.querySelector(".build_order_butt").className = "build_order_butt";
             document.querySelector(".build_order_butt").addEventListener("click", order_save)
             document.querySelector(".build_order_butt").textContent='儲存配單'

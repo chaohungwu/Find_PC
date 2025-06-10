@@ -40,7 +40,8 @@ async function get_order_detail_compent() {
                 order_deetail_data_component_type="storage"
             }else if(order_deetail_data_component_type=="CASE"){
                 order_deetail_data_component_type="case"
-            }
+            }else if(order_deetail_data_component_type=="MB"){
+                order_deetail_data_component_type="mb"}
                 
         
         let order_deetail_data_quantity = order_deetail_data[i]['quantity']

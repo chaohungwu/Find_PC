@@ -84,6 +84,18 @@ class DB_Function:
             connection.close() # return connection to the pool.
 
             return db_search
+        
+    # 搜尋
+    def insert_data(self, sql, parameter):
+        """
+        sql:str 欲使用的sql語法
+        """
+        connection = pool.get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, parameter)
+        connection.commit()
+        cursor.close()
+        connection.close()
 
 
 
