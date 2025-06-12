@@ -10,7 +10,8 @@ services:
     networks:
       - backend
     depends_on:
-      - db  # 等待 MySQL 啟動
+      db:
+        condition: service_healthy
 
   nginx:
     image: nginx:alpine
@@ -35,20 +36,15 @@ services:
       MYSQL_DATABASE: ${db_name}
     ports:
       - "3306:3306"
-    volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - db_data:/var/lib/mysql
+
     networks:
       - backend
 
-
-  redis:
-    image: redis:alpine
-    container_name: redis_cache
-    ports:
-      - "6379:6379"
-    networks:
-      - backend
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 
 volumes:
