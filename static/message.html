@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find-PC</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans TC' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/static/css/message.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/account.css">
+    <script defer src="/static/js/base_fun.js"></script>
+    <script defer src="/static/js/account.js"></script>
+    <script defer src="/static/js/component_price_table.js"></script>
+    <script defer src="/static/js/message.js"></script>
+
+
+    
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+    <!-- <script defer src="/static/js/main.js"></script> -->
+    <!-- <script defer src="/static/js/upload.js"></script> -->
+</head>
+
+
+
+<body id="body">
+    <div class="web_body">
+        <header>
+            <div class="nav">
+                <div class="nav_left">
+                    <div class="nav_left_text" onclick="home_page()">Find PC</div>
+                </div>
+
+                <div class="nav_right">
+                    <div class="nav_right_text" onclick="build_order()">快速配單</div>
+                    <div class="nav_right_text" onclick="rank_page()">硬體跑分</div>
+                    <div class="nav_right_text" onclick="messageboard()">配單討論</div>
+                    <div class="nav_right_login">
+                        <div class="nav_right_img"></div>
+                        <div class="nav_right_text" id="singin_singup_text">登入/註冊</div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="contain">
+            <div class="content">
+
+
+                <div class="message_block_div">
+                    <div class="title_message_block">
+                        <div class="title_message_block_title"></div>
+                        <!-- <div class="title_message_block_img">aaa</div> -->
+                        <div class="title_message_block_user"></div>
+                    </div>
+
+                    <div class="message_text_background">
+                        <div class="message_text_background_text"></div>
+                    </div>
+                </div>
+
+
+
+                <div class="message_block">
+                    <div class="message_block_title">留言回覆</div>
+
+
+                    <div class="message_block_content_group">
+                        
+                        <!-- <div class="message_block_content">
+                            <div class="message_user_block">
+                                <div class="message_block_content_user">海龜001</div>
+                            </div>
+                            <div class="message">我覺得這邊至少要使用12GB以上的VRAM</div>
+                        </div>
+
+                        <div class="message_block_content">
+                            <div class="message_user_block">
+                                <div class="message_block_content_user">海龜001</div>
+                            </div>
+                            <div class="message">我覺得這邊至少要使用12GB以上的VRAM</div>
+                        </div> -->
+
+                    </div>
+
+
+
+
+                    <div class="message_respond_div">
+                        <input class="message_respond_input" placeholder="輸入回覆內容...">
+                        <button class="message_respond_input_butt" onclick="message_response_build()">送出</button>
+                    </div>
+
+                </div>
+
+
+
+
+
+        </div>
+
+
+        <footer class="flooter"></footer>
+
+
+
+    </div>
+
+</body>
+
+
+</html>

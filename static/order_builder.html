@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find-PC</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans TC' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/static/css/order_builder_style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/account.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+    <script defer src="/static/js/base_fun.js"></script>
+    <script defer src="/static/js/account.js"></script>
+    <script defer src="/static/js/get_component_data.js"></script>
+
+</head>
+
+
+
+<body id="body">
+    <div class="web_body">
+
+        <header>
+            <div class="nav">
+                <div class="nav_left">
+                    <div class="nav_left_text" onclick="home_page()">Find PC</div>
+                </div>
+
+                <div class="nav_right">
+                    <div class="nav_right_text" onclick="build_order()">快速配單</div>
+                    <div class="nav_right_text" onclick="rank_page()">硬體跑分</div>
+                    <div class="nav_right_text" onclick="messageboard()">配單討論</div>
+                    <div class="nav_right_login">
+                        <div class="nav_right_img"></div>
+                        <div class="nav_right_text" id="singin_singup_text" onclick="show_login_table()">登入/註冊</div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="contain">
+            <div class="content">
+
+                <div class="content_title">
+                    <div class="content_title__text">快速配單</div>
+                </div>
+
+                <div class="function_content_group">
+
+                    <div class="function_content_group_left">
+                        <div class="component_group_div">
+                             <div class="component_group_div_scoll">
+                                <div class="component_group_div_title">選擇的零件</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="function_content_group_middle">
+                        <div class="order_build_group">
+                            <div class="order_build_background">
+                                <div class="order_build_name">
+                                    <div class="order_build_name_title">訂單名稱：</div>
+                                    <input class="order_build_name_input"  value="我的配單001"></input>
+                                </div>
+                                <div class="total_price">
+                                    <div class="total_price_title">總價：</div>
+                                    <input class="total_price_number" disabled>元</input>
+                                </div>
+
+                                <div class="build_order_butt_div">
+                                    <button class="build_order_butt">儲存配單</button>
+                                    <div class="login_hint_text">登入後即可儲存配單與變更訂單名稱</div>
+                                </div>
+
+                                <div></div>
+                            </div>
+                        </div>
+
+                        <div class="case_img"></div>
+                    </div>
+
+
+
+                    <div class="function_content_group_right">
+                        <div class="filter_radio_group">
+                            <div class="filter_radio_group_title">選擇零件：</div>
+                            <div class="filter_radio_group_background">
+                                <input class="radio_select" type="radio" name="component_choice" id="cpu" value="cpu" checked  onchange="build_compent_but()">
+                                <label for="cpu" class="radio_style">
+                                    <span class="radio_span">CPU</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="gpu" value="gpu"  onchange="build_compent_but()">
+                                <label for="gpu" class="radio_style">
+                                    <span class="radio_span" onchange="build_compent_but()">顯示卡</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="mb" value="mb"  onchange="build_compent_but()">
+                                <label for="mb" class="radio_style">
+                                    <span class="radio_span" onchange="build_compent_but()">主機板</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="ram" value="ram"  onchange="build_compent_but()">
+                                <label for="ram" class="radio_style">
+                                    <span class="radio_span" onchange="build_compent_but()">記憶體</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="psu" value="PSU"  onchange="build_compent_but()">
+                                <label for="psu" class="radio_style">
+                                    <span class="radio_span" onchange="build_compent_but()">PSU</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="storage" value="storage"  onchange="build_compent_but()">
+                                <label for="storage" class="radio_style">
+                                    <span class="radio_span" onchange="build_compent_but()">硬碟</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="cooler" value="cooler"  onchange="build_compent_but()">
+                                <label for="cooler" class="radio_style">
+                                    <span class="radio_span" onchange="build_compent_but()">散熱器</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="case" value="case"  onchange="build_compent_but()">
+                                <label for="case" class="radio_style">
+                                    <span class="radio_span" onchange="build_compent_but()">機殼</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+
+                        
+                        <div class="component_select_group">
+
+                            
+                            <div class="component_select_group_background">
+
+                                <div class="component_select_group_content">
+                                    <div class="component_select_group_content_background">
+                                        <div class="component_select_group_content_img"></div>
+                                        <div class="component_select_group_content_name">Intel Raptor Lake-s 14代1700 腳位</div>
+                                        <button  class="component_select_group_content_butt">選擇</button>
+                                    </div>
+                                </div>
+
+                                <div class="component_select_group_content">
+                                    <div class="component_select_group_content_background">
+                                        <div class="component_select_group_content_img"></div>
+                                        <div class="component_select_group_content_name">Intel Raptor Lake-s 14代1700 腳位</div>
+                                        <button  class="component_select_group_content_butt">選擇</button>
+                                    </div>
+                                </div>
+                                <div class="component_select_group_content">
+                                    <div class="component_select_group_content_background">
+                                        <div class="component_select_group_content_img"></div>
+                                        <div class="component_select_group_content_name">Intel Raptor Lake-s 14代1700 腳位</div>
+                                        <button  class="component_select_group_content_butt">選擇</button>
+                                    </div>
+                                </div>
+                                <div class="component_select_group_content">
+                                    <div class="component_select_group_content_background">
+                                        <div class="component_select_group_content_img"></div>
+                                        <div class="component_select_group_content_name">Intel Raptor Lake-s 14代1700 腳位</div>
+                                        <button  class="component_select_group_content_butt">選擇</button>
+                                    </div>
+                                </div>
+                                <div class="component_select_group_content">
+                                    <div class="component_select_group_content_background">
+                                        <div class="component_select_group_content_img"></div>
+                                        <div class="component_select_group_content_name">Intel Raptor Lake-s 14代1700 腳位</div>
+                                        <button  class="component_select_group_content_butt">選擇</button>
+                                    </div>
+                                </div>
+                                <div class="component_select_group_content">
+                                    <div class="component_select_group_content_background">
+                                        <div class="component_select_group_content_img"></div>
+                                        <div class="component_select_group_content_name">Intel Raptor Lake-s 14代1700 腳位</div>
+                                        <button  class="component_select_group_content_butt">選擇</button>
+                                    </div>
+                                </div>
+                                <div class="component_select_group_content">
+                                    <div class="component_select_group_content_background">
+                                        <div class="component_select_group_content_img"></div>
+                                        <div class="component_select_group_content_name">Intel Raptor Lake-s 14代1700 腳位</div>
+                                        <button  class="component_select_group_content_butt">選擇</button>
+                                    </div>
+                                </div>
+                                <!-- <div class="test"></div>
+                                <div class="test2"></div>
+                                <div class="test"></div>
+                                <div class="test2"></div>
+                                <div class="test"></div>
+                                <div class="test2"></div> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <footer class="flooter"></footer>
+
+        </div>
+    </div>
+
+
+<script>
+    function test(){
+        a_dom = document.querySelector(".component_group_background_component").name
+        console.log(a_dom)
+    }
+
+
+
+</script>
+
+</body>
+
+
+</html>

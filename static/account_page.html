@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find-PC</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans TC' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/account_page_style.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+    <script defer src="/static/js/base_fun.js"></script>
+    <script defer src="/static/js/account.js"></script>
+    <script defer src="/static/js/user_page_fun.js"></script>
+
+</head>
+
+<body>
+    <div class="web_body">
+
+        <header>
+            <div class="nav">
+                <div class="nav_left">
+                    <div class="nav_left_text" onclick="home_page()">Find PC</div>
+                </div>
+
+                <div class="nav_right">
+                    <div class="nav_right_text" onclick="build_order()">快速配單</div>
+                    <div class="nav_right_text" onclick="rank_page()">硬體跑分</div>
+                    <div class="nav_right_text" onclick="messageboard()">配單討論</div>
+                    <div class="nav_right_login">
+                        <div class="nav_right_img"></div>
+                        <div class="nav_right_text" id="singin_singup_text" onclick="show_login_table()">登入/註冊</div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <div class="contain">
+
+            <div class="content">
+                <div class="user_info">
+                    <div class="user_info_background">
+                        <div class="user_name_group">
+
+                            <div class="user_name_group_name_div">
+                                <div class="user_name_group_name_title">使用者名稱：</div>
+                                <div class="user_name_group_name_text"></div>
+                            </div>
+
+                            <div class="user_name_group_email_div">
+                                <div class="user_name_group_email_title">使用者信箱：</div>
+                                <div class="user_name_group_email_text"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="user_order_and_message">
+                    <div class="user_order">
+                        <div class="user_order_title">我的配單紀錄：</div>
+
+                        
+                        <div class="user_order_content">
+
+                            <!-- <div class="order_background">
+                                <div class="order_del_butt_div">
+                                    <button class="order_del_butt">x</button>
+                                </div>
+                                <div class="order_name_div">
+                                    <div class="order_name_div_title">配單名稱：</div>
+                                    <div class="order_name_div_text">我的主機01</div>
+                                    <button class="order_select_butt">選擇</button>
+                                </div>
+                                <div class="order_builed_time"></div>
+                            </div>
+
+
+                            <div class="order_background">
+                                <div class="order_del_butt_div">
+                                    <button class="order_del_butt">x</button>
+                                </div>
+                                <div class="order_name_div">
+                                    <div class="order_name_div_title">配單名稱：</div>
+                                    <div class="order_name_div_text">我的主機01</div>
+                                    <button class="order_select_butt">選擇</button>
+                                </div>
+                                <div class="order_builed_time"></div>
+                            </div> -->
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="user_message">
+                        <div class="user_message_title">我的討論紀錄：</div>
+                        <div class="user_message_content"></div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+            <footer class="flooter"></footer>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>

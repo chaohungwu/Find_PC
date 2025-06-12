@@ -1,0 +1,803 @@
+html, body {
+  height: 100%; /*外層高度100%*/
+  margin: 0;
+}
+
+.contain{
+    display: flex;
+    height: auto;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+    flex-direction: column;
+    flex-grow: 1; /*可佔滿垂直剩餘的空間*/
+    justify-content: center;
+}
+
+.content{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 70px;
+    box-sizing: border-box;
+    align-items: center;
+    flex-grow: 1; /*可佔滿垂直剩餘的空間*/
+    padding-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+    
+.content_title{
+    height: auto;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.content_title__text{
+    display: flex;
+    font-weight: bolder;
+    font-size: 30px;
+    font-family: 'Noto Sans TC';
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+.function_content_group{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+.function_content_group_left{
+    display: flex;
+    height: 100%;
+    width: 30%;
+    max-width: 420px;
+    min-width: 340px;
+    flex-direction: column;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.component_group_div{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 900px;
+    border-radius: 10px;
+    background-color: rgb(190, 190, 190);
+}
+
+.component_group_div_scoll{
+    display: flex;
+    height: 900px;
+    /* min-height: 900px; */
+    width: 100%;
+    overflow: scroll;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.component_group_div_title{
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Noto Sans TC';
+    font-weight: bolder;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.add_component_button_div{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_component_button{
+    display: flex;
+    height: 30px;
+    width: 340px;
+    border: 0;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;    
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Noto Sans TC';
+    background-color: rgb(136, 136, 136);
+    /* margin-top: 10px; */
+}
+
+.add_order_button:hover{
+    box-shadow:  1px 1px 5px rgb(190, 190, 190);
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+}
+.add_order_button:active{
+    background-color: rgb(160, 160, 160);
+    box-shadow:  1px 1px 5px rgb(190, 190, 190);
+    transition: all 0.1s ease-out;
+}
+
+
+.component_group{
+    display: flex;
+    flex-direction: column;
+}
+
+.component_group_background{
+    display: flex;
+    height: 70px;
+    width: 380px;
+    border-radius: 10px;
+    background-color: rgb(217, 217, 217);
+    align-items: center;
+    padding-left: 10px;
+    box-sizing: border-box;
+    gap: 5px;
+}
+
+.component_group_background:hover{
+    box-shadow:  1px 1px 5px rgb(160, 160, 160);
+    transition: all 0.1s ease-out;
+
+}
+
+.component_group_background_component{
+    display: flex;
+    height: 50px;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(136, 136, 136);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+}
+
+
+
+
+.component_group_background_component_MB{
+    display: flex;
+    height: 50px;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(136, 136, 136);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+}
+
+
+
+.component_group_background_component_CPU{
+    display: flex;
+    height: 50px;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(136, 136, 136);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+}
+.component_group_background_component_GPU{
+    display: flex;
+    height: 50px;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(136, 136, 136);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+}
+
+.component_group_background_component_RAM{
+    display: flex;
+    height: 50px;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(136, 136, 136);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+}
+
+.component_group_background_component_storage{
+    display: flex;
+    height: 50px;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(136, 136, 136);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+}
+
+.component_group_background_component_storage{
+    display: flex;
+    height: 50px;
+    width: 100px;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(136, 136, 136);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+}
+
+.component_group_background_name{
+    display: flex;
+    height: 90%;
+    width: 200px;
+    border: 0;
+    border-radius: 3px;
+    color: rgb(100, 100, 100);
+    overflow: scroll;
+    font-family: 'Noto Sans TC';
+    font-size: 12px;
+    align-items: center;
+}
+
+
+.component_group_background_name::-webkit-scrollbar {
+  display: none;  /* Chrome / Safari / Opera */
+}
+
+
+.component_group_background_num{
+    display: flex;
+    width: 15px;
+    border: 0;
+    border-radius: 3px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.delete_component_group_butt{
+    display: flex;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(136, 136, 136);
+    font-size: 14px;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.delete_component_group_butt:hover{
+    box-shadow:  1px 1px 5px rgb(160, 160, 160);
+    transition: all 0.1s ease-out;
+}
+
+
+/* 網頁中間部分 */
+.function_content_group_middle{
+    display: flex;
+    height: 100%;
+    width: 30%;
+    min-width: 340px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+
+.order_build_group{
+    display: flex;
+    width: 100%;
+    /* min-width: 600px; */
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.order_build_background{
+    display: flex;
+    height: 200px;
+    /* width: 500px; */
+    border-radius: 10px;
+    background-color: rgb(215, 215, 215);
+    flex-direction: column;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.order_build_name{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+.order_build_name_title{
+    display: flex;
+    width: auto;
+    height: 40px;
+    font-size: 20px;
+    font-family: 'Noto Sans TC';
+    font-weight: bold;
+    align-items: center;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+.order_build_name_input{
+    display: flex;
+    width: 300px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Noto Sans TC';
+    font-weight: bold;
+}
+
+
+.total_price{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.total_price_title{
+    display: flex;
+    width: auto;
+    height: 40px;
+    font-size: 20px;
+    font-family: 'Noto Sans TC';
+    font-weight: bold;
+    align-items: center;
+}
+
+.total_price_number{
+    display: flex;
+    width: 380px;
+    height: auto;
+    font-size: 40px;
+    font-family: 'Noto Sans TC';
+    font-weight: bold;
+    color: red;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    background-color: rgba(0,0,0,0);
+    justify-items: end;
+    padding-right: 20px;
+    box-sizing: border-box;
+    
+}
+
+.build_order_butt_div{
+    display: flex;
+    width: 95%;
+    justify-content: end;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.login_hint_text{
+    display: flex;
+    font-size: 12px;
+    color: #666666;
+}
+
+
+
+.build_order_butt_notLogin{
+    display: flex;
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(130, 130, 130);
+    font-family: 'Noto Sans TC';
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.build_order_butt{
+    display: flex;
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(246, 207, 108);
+    font-family: 'Noto Sans TC';
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow:  1px 1px 5px rgb(190, 190, 190);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.build_order_butt:hover{
+    box-shadow:  1px 1px 5px rgb(160, 160, 160);
+    transition: all 0.1s ease-out;
+}
+
+
+
+
+
+
+
+
+
+
+.case_img{
+    width: 90%;
+    height: 700px;
+    background-image: url("../img/image\ 6.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+.function_content_group_right{
+    display: flex;
+    height: 100%;
+    width: 35%;
+    max-width: 600px;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+
+/* 零件篩選樣式 */
+.filter_group_background{
+    display: flex;
+    width: 600px;
+    height: 200px;
+    border-radius: 10px;
+    background-color:rgb(136, 136, 136) ;
+    padding-top: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.filter_radio_group{
+    display: flex;
+    height: 100%;
+    min-height: 200px;
+    width: 100%;
+    border-radius: 10px;
+    font-family: 'Noto Sans TC';
+    background-color: rgb(136, 136, 136);
+    flex-direction: column;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+
+.filter_radio_group_title{
+    font-family: 'Noto Sans TC';
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    padding-top: 20px;
+}
+/* .filter_group_background_brand_div_select_group{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.filter_group_background_brand_div_select_group_title{
+    display: flex;
+    width: auto;
+    border-radius: 5px;
+    font-family: 'Noto Sans TC';
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+.filter_group_background_brand_div_select{
+    display: flex;
+    width: 300px;
+    height: 24px;
+    border-radius: 5px;
+    font-family: 'Noto Sans TC';
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.filter_butt_div{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: end;
+}
+
+.filter_butt{
+    display: flex;
+    width: 50px;
+    height: 30px;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(215, 215, 215);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans TC';
+    font-weight: bolder;
+    box-shadow:  1px 1px 5px rgb(160, 160, 160);
+}
+
+.filter_butt:hover{
+    box-shadow:  1px 1px 5px rgb(208, 208, 208);
+    transition: all 0.1s ease-out;
+} */
+
+
+.filter_radio_group_background{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(136, 136, 136);
+    padding-top: 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.radio_select{
+    display: none;
+}
+
+.radio_style{
+    padding-right: 20px;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+.radio_span{
+    display: flex;
+    width: 120px;
+    height: 40px;
+    color: #666666;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 3px rgb(201, 201, 201);
+    cursor: pointer;
+    }
+
+.radio_span:hover{
+    background-color: rgb(217, 217, 217);
+
+}
+
+
+/* 選取狀態的樣式 */
+.radio_select:checked + label .radio_span {
+    background-color: rgb(246, 207, 108);
+    color: black;
+    box-shadow: none;
+}
+
+
+/* 零件新增樣式 */
+.component_select_group{
+    display: flex;
+    width: 100%;
+    height: 700px;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.component_select_group_background{
+    display: flex;
+    width: 100%;
+    height: 700px;
+    border-radius: 5px;
+    overflow:scroll;
+    background-color: rgb(217, 217, 217);
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;   /* 垂直方向可以滾動 */
+    overflow-x: hidden;   /* 水平方向隱藏捲軸 */
+}
+
+.component_select_group_content{
+    display: flex;
+    width: 90%;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgb(191, 191, 191);
+    margin-top: 10px;
+}
+
+.component_select_group_content_background{
+    display: flex;
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgb(191, 191, 191);
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.component_select_group_content_img{
+    display: flex;
+    height: 80px;
+    width: 100px;
+    min-width: 100px;
+    border-radius: 5px;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.component_select_group_content_name{
+    display: flex;
+    width: 100%;
+    max-width: 260px;
+    height: 100%;
+    padding: 10px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
+    font-family: 'Noto Sans TC';
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+    /* flex-grow: 1; */
+    font-weight: bolder;
+    font-size: auto;
+    /* overflow: hidden; */
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* animation: scroll-left 15s linear infinite; */
+}
+
+.component_select_group_content_name::-webkit-scrollbar {
+    height: 8px;
+}
+
+.component_select_group_content_name::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+.component_select_group_content_name::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+.component_select_group_content_name span{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #d0eaff;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+.component_select_group_content_price{
+    display: flex;
+    width: auto;
+    min-width: 80px;
+    flex-wrap: nowrap;
+    color: white;
+    font-family: 'Noto Sans TC';
+    justify-content: center;
+    padding-right: 10px;
+    box-sizing: border-box;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+
+
+.component_select_group_content_butt{
+    display: flex;
+    width: 40px;
+    min-width: 40px;
+    height: 35px;
+    border: 0;
+    border-radius: 5px;
+    font-family: 'Noto Sans TC';
+    font-weight: bolder;
+    background-color: white;
+    box-shadow:  1px 1px 5px rgb(160, 160, 160);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.component_select_group_content_butt:hover{
+    box-shadow:  1px 1px 5px rgb(208, 208, 208);
+    transition: all 0.1s ease-out;
+}
+
+
+.test{
+    display: flex;
+    height: 300px;
+    width: 100%;
+    background-color: red;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+.test2{
+    display: flex;
+    height: 300px;
+    width: 100%;
+    background-color: blue;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+
+
+

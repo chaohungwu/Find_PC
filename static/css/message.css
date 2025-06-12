@@ -1,0 +1,249 @@
+.contain{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+    justify-content: center;
+}
+
+.content{
+    display: flex;
+    /* height: 980px; */
+    height: 97vh;
+    width: 100%;
+    max-width: 1600px;
+    /* align-items: center; */
+    padding-top: 80px;
+    box-sizing: border-box;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.message_block_div{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    max-height: 300px;
+    flex-wrap: nowrap;
+    background-color: rgb(217, 217, 217);
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+
+.title_message_block{
+    display: flex;
+    width: 100%;
+    /* height: 100%; */
+    max-height: 300px;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title_message_block_title{
+    display: flex;
+    width:auto;
+    height: 100%;
+    flex-grow: 1;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-weight: bolder;
+    align-items: center;
+}
+
+.title_message_block_img{
+    display: flex;
+    width:auto;
+    height: 100%;
+    word-wrap: nowrap;
+    padding: 20px;
+    padding-right: 0px;
+    box-sizing: border-box;
+}
+
+
+
+
+.title_message_block_user{
+    display: flex;
+    width:auto;
+    height: 100%;
+    word-wrap: nowrap;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.message_text_background{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.message_text_background_text{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+
+.message_block{
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+
+    border-radius: 10px;
+    min-height: 200px;
+}
+
+.message_block_title{
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-weight: bolder;
+}
+
+.message_block_content_group{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+
+
+.message_block_content{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(217, 217, 217);
+    border-radius: 10px;
+    /* min-height: 200px; */
+    flex-direction: column;
+}
+
+
+.message_user_block{
+    display: flex;
+    height: 30px;
+    justify-content: end;
+}
+
+.message_block_content_userimg{
+    display: flex;
+    height: 30px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+.message{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    background-color: white;
+    border-radius: 5px;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+
+}
+
+.message_respond_div{
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgb(217, 217, 217);
+    margin-top: 20px;
+
+}
+
+.message_respond_div_title{
+    display: flex;
+    width: 100%;
+    height:40px ;
+    align-items: center;
+}
+
+.message_respond_div_text{
+    display: flex;
+    width: 100%;
+    height:40px ;
+    background-color: white;
+}
+
+
+
+.message_respond_div{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+    /* width: 100%; */
+    /* height:auto ; */
+    /* justify-content: space-between; */
+    /* flex-wrap: nowrap; */
+}
+
+
+
+.message_respond_input{
+    display: flex;
+    width: 100%;
+    height:40px ;
+    background-color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.message_respond_input_butt{
+    display: flex;
+    width: 60px;
+    height:30px ;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(246, 207, 108);
+    box-shadow:  1px 1px 5px rgb(190, 190, 190);
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.message_respond_input_butt:hover{
+    background-color: rgb(249, 219, 141);
+    box-shadow:  none;
+}
+
+

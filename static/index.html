@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find-PC</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans TC' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/account.css">
+    <script defer src="/static/js/base_fun.js"></script>
+    <script defer src="/static/js/account.js"></script>
+    <script defer src="/static/js/component_price_table.js"></script>
+
+    
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+    <!-- <script defer src="/static/js/main.js"></script> -->
+    <!-- <script defer src="/static/js/upload.js"></script> -->
+</head>
+
+
+
+<body id="body">
+
+
+    <div class="web_body">
+
+        <header>
+            <div class="nav">
+                <div class="nav_left">
+                    <div class="nav_left_text" onclick="home_page()">Find PC</div>
+                </div>
+
+                <div class="nav_right">
+                    <div class="nav_right_text" onclick="build_order()">快速配單</div>
+                    <div class="nav_right_text" onclick="rank_page()">硬體跑分</div>
+                    <div class="nav_right_text" onclick="messageboard()">配單討論</div>
+                    <div class="nav_right_login">
+                        <div class="nav_right_img"></div>
+                        <div class="nav_right_text" id="singin_singup_text">登入/註冊</div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <div class="contain">
+            <div class="content">
+                <div class="left_content">
+
+                    <div class="left_content_top">
+                        <div class="left_content_top__slogan">
+                            簡單快速<br>
+                            取得最符合你需求的硬體
+                        </div>
+                        <button class="build_order_button" onclick="build_order()">硬體簡易快速配單</button>
+                    </div>
+                    
+                    <div class="left_content_bottom">
+                        <div class="left_content_bottom__title">
+                            <div class="left_content_bottom__text">硬體價格表</div>
+                            <!-- <div class="left_content_bottom__updatatime">最近更新時間</div> -->
+                        </div>
+                        <div class="left_content_bottom__button_group">
+                            <button class="price_button" onclick= "show_component_price_table_CPU()" >CPU</button>
+                            <button class="price_button" onclick= "show_component_price_table_MB()" >主機板</button>
+                            <button class="price_button" onclick= "show_component_price_table_GPU()">GPU</button>
+                            <button class="price_button" onclick= "show_component_price_table_RAM()">RAM</button>
+                            <button class="price_button" onclick= "show_component_price_table_storage()">硬碟</button>
+                            <button class="price_button" onclick= "show_component_price_table_cooler()">散熱</button>
+                            <button class="price_button" onclick= "show_component_price_table_PSU()">PSU</button>
+                            <button class="price_button" onclick= "show_component_price_table_case()">機殼</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="right_content">
+                    <div class="right_content__img"></div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+        <footer class="flooter"></footer>
+
+
+
+    </div>
+
+</body>
+
+
+</html>
