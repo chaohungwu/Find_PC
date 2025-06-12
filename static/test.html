@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+
+<body>
+
+
+    <div class="canvas_dom_div">
+        <canvas id="canvas_dom" style="height: 700px; width: 1200px;"></canvas>
+    </div>
+
+
+
+
+
+
+
+    <script>
+    const ctx = document.getElementById('canvas_dom').getContext('2d');
+
+    var scatterChart = new Chart(ctx, {
+        type: "scatter",
+        data: {
+            datasets: [
+                {
+                    label: "Scatter Dataset",
+                    data: [
+                            {
+                                x: -10,
+                                y: 0
+                            },
+                            {
+                                x: 0,
+                                y: 10
+                            },
+                            {
+                                x: 10,
+                                y: 5
+                            }
+                        ]
+                }
+            ]
+        },
+        options: {
+            scales: {
+                xAxes: [
+                    {
+                        type: "linear",
+                        position: "bottom"
+                    }
+                ]
+            }
+        }
+    });
+
+    data: [
+        {
+            x: 10,
+            y: 20
+        },
+        {
+            x: 15,
+            y: 10
+        }
+    ];
+
+
+    </script>
+
+</body>
+</html>
