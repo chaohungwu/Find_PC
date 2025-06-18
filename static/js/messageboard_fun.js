@@ -54,9 +54,10 @@ async function show_all_message() {
                 document.querySelector(".messageboard_background").appendChild(message_div_dom)
 
 
-                let message_img_dom = document.createElement("div")
-                message_img_dom.className = 'message_img'
-                message_div_dom.appendChild(message_img_dom)
+                // let message_img_dom = document.createElement("div")
+                // message_img_dom.className = 'message_img'
+                // message_div_dom.appendChild(message_img_dom)
+
 
                 let message_title_dom = document.createElement("div")
                 message_title_dom.className = 'message_title'

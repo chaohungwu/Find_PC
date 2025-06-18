@@ -11,4 +11,4 @@ node_modules/
 *.tar
 *.zip
 *.tgz
-*.egg-info/ㄍ
+*.egg-info/

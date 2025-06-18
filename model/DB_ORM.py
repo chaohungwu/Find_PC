@@ -18,11 +18,11 @@ dbconfig = {
             "password": db_password,
 
             # 本機測試
-            # "host": "localhost",
+            "host": "localhost",
 
             # 部屬用
-            "host": "mysql_db",
-            "port": "3306"
+            # "host": "mysql_db",
+            # "port": "3306"
             }
 
 pool = mysql.connector.pooling.MySQLConnectionPool(pool_name="find_pc_db",
@@ -35,7 +35,7 @@ class DB_Function:
     def __init__(self):
         pass
     
-    # 搜尋
+    # 搜尋(含欄位)
     def search_column(self, sql, parameter=None):
         """
         sql: str 欲使用的 SQL 語法
@@ -88,6 +88,7 @@ class DB_Function:
     # 搜尋
     def insert_data(self, sql, parameter):
         """
+        插入新資料
         sql:str 欲使用的sql語法
         """
         connection = pool.get_connection()
@@ -102,6 +103,7 @@ class DB_Function:
     # 註冊功能
     def insert(self, sql, parameter):
         """
+        註冊新會員
         parameter:(member_name, member_email, member_password, member_hash_password)
         """
         connection = pool.get_connection()
@@ -116,6 +118,7 @@ class DB_Function:
     # 匯入零件資料功能
     def ComponentData2DB(self, sql, parameter):
         """
+        將爬蟲爬到的零件資料匯到DB中
         parameter：(
                     cpu_data["id"],
                     cpu_data["name"],
@@ -136,6 +139,7 @@ class DB_Function:
 
     def ComponentDataSearch(self, sql, parameter=None):
         """
+        查詢零件資料
         parameter：(
                     cpu_data["id"],
                     cpu_data["name"],
@@ -164,21 +168,6 @@ class DB_Function:
         return result
 
 
-
-
-    # 儲存order
-    # def SaveOrder2DB(self, sql, parameter ,order_details):
-    #     """
-    #     """
-    #     connection = pool.get_connection()
-    #     cursor = connection.cursor()
-    #     db_sql = sql
-    #     cursor.execute(db_sql, parameter)
-
-
-    #     connection.commit()
-    #     cursor.close()
-    #     connection.close()
 
     def SaveOrder2DB(self, sql, parameter, order_details):
         """
@@ -219,6 +208,9 @@ class DB_Function:
 
 
     def DeleteOrder(self, sql, parameter, order_id):
+        """
+        刪除訂單
+        """
         connection = pool.get_connection()
         cursor = connection.cursor()
         delete_sql = sql
@@ -290,42 +282,60 @@ class DB_Function:
 
 
 
+    def get_order_components(self, order_id):
 
+        component_tables = {
+            "cpu": "cpu_table",
+            "gpu": "gpu_table",
+            "mb": "mb_table",
+            "ram": "ram_table",
+            "psu": "psu_table",
+            "storage": "storage_table",
+            "case": "case_table",
+            "cooler": "cooler_table"
+        }
 
+        # 查所有零件類型與 ID
+        try:
+            connection = pool.get_connection()
+            cursor = connection.cursor(dictionary=True)
 
+            # 查詢該訂單的所有元件（含 component_type, component_id, quantity）
+            cursor.execute("""
+                SELECT component_type, component_id, quantity
+                FROM order_detail_table
+                WHERE order_id = %s
+            """, (order_id,))
+            components = cursor.fetchall()
 
+            result = []
 
-    # def OrderDetailSearch(self, sql, parameter, order_details):
-        # """
-        # 儲存訂單主檔與明細資料到資料庫
+            for c in components:
+                comp_type = c["component_type"].lower()
+                comp_id = c["component_id"]
+                quantity = c["quantity"]
+                table_name = component_tables.get(comp_type)
 
-        # - sql: 用於插入 order_table 的 SQL 語句
-        # - parameter: 對應 order_table 欄位的值（tuple）
-        # - order_details: list of tuples，每筆為 (component_type, component_id, quantity)
-        # """
-        # connection = pool.get_connection()
-        # cursor = connection.cursor()
-        # try:
-        #     # 插入主檔
-        #     cursor.execute(sql, parameter)
-        #     order_id = cursor.lastrowid  # 取得剛剛插入的訂單 ID
+                if not table_name:
+                    continue  # 不支援的類型，略過
 
-        #     # 插入每筆明細資料
-        #     detail_sql = """
-        #     INSERT INTO order_detail_table (order_id, component_type, component_id, quantity)
-        #     VALUES (%s, %s, %s, %s)
-        #     """
-        #     for detail in order_details:
-        #         component_type, component_id, quantity = detail
-        #         cursor.execute(detail_sql, (order_id, component_type, component_id, quantity))
+                # 查詢該零件的 id, name, price
+                detail_cursor = connection.cursor(dictionary=True)
+                query = f"SELECT id, name, price FROM {table_name} WHERE id = %s"
+                detail_cursor.execute(query, (comp_id,))
+                detail = detail_cursor.fetchone()
+                detail_cursor.close()
 
-        #     # 提交
-        #     connection.commit()
+                if detail:
+                    # 附加數量與 component_type
+                    detail["quantity"] = quantity
+                    detail["component_type"] = comp_type
+                    result.append(detail)
 
-        
-        # except Exception as e:
-        #     print("寫入訂單失敗：", e)
-        #     connection.rollback()
-        # finally:
-        #     cursor.close()
-        #     connection.close()
+            cursor.close()
+            connection.close()
+            return result
+
+        except Exception as e:
+            print("查詢訂單元件失敗：", e)
+            return []
