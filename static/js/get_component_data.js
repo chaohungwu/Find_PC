@@ -9,6 +9,11 @@ async function GetComponmentInit(){
     await new_componment_build_compent_but()
     await order_save_buttCreate()
     // await scroll2bottom()
+
+    // 新增檢查機制
+    document.querySelectorAll(".component_select_group_content_butt").forEach(button => {
+    button.addEventListener("click", check_order_logic);
+    });
 }
 
 GetComponmentInit()
@@ -39,6 +44,11 @@ async function new_componment_build_compent_but(){
 
     await compent_filter_brand()
     // await Build_filter_select_componment()
+    
+    // 新增檢查機制
+    document.querySelectorAll(".component_select_group_content_butt").forEach(button => {
+    button.addEventListener("click", check_order_logic);
+    });
 
 }
 
@@ -1677,6 +1687,7 @@ async function order_save(){
         });
 
     let data =await response.json();
+
     console.log(data)
     window.alert(data["msg"])
     window.location.href = `/`
@@ -1684,8 +1695,89 @@ async function order_save(){
 }
 
 
+// 檢查機制
+// 1:cpu個數
+// 2:gpu個數
+// 2:mb個數
+// 3:ram個數
+// 4:psu個數
+// 5:storage個數
+// 6:case個數
+// 7:cooler個數
+
+
+async function check_order_logic(){
+    // console.log("check_order_logic")
+    // console.log(document.querySelectorAll(".component_group"))
+
+    let all_check_dom = document.querySelectorAll(".component_group")
+
+    componment_num_dict = {
+        "cpu":0,
+        "gpu":0,
+        "mb":0,
+        "ram":0,
+        "psu":0,
+        "storage":0,
+        "cooler":0,
+        "case":0,
+    } 
+
+    // 檢查各零件個數
+    for(let i=0; i<all_check_dom.length; i++){
+        let part = all_check_dom[i]["id"].split("_")
+        let partType = part[1].toLowerCase();
+        // console.log(partType)
+
+        if (componment_num_dict.hasOwnProperty(partType)) {
+            componment_num_dict[partType] += 1;
+        }
+    }
+
+    try{
+        let all_check_dom = document.querySelectorAll(".componment_logic_content_div")
+        // document.querySelector("#first_tip").remove()
+        for (let dom of all_check_dom) {
+            dom.remove();
+        }
+    }catch{}
+
+
+    for (let key in componment_num_dict) {
+        let count = componment_num_dict[key];
+
+        if (count === 0) {
+            console.log(`${key}-1`);
+            await logic_text_build(`您沒有選擇 ${key.toUpperCase()}`, `${key}-1`);
+        } else if (count > 1) {
+            console.log(`${key}-2`);
+            await logic_text_build(`您選擇的 ${key.toUpperCase()} 多餘 1`, `${key}-2`);
+        }
+    }
+
+    console.log(componment_num_dict)
+
+}
 
 
 
+// 新增文字
+async function logic_text_build(text, logic_type){
 
+    let new_componment_logic_content_div = document.createElement("div")
+    new_componment_logic_content_div.className ='componment_logic_content_div'
+    document.querySelector(".componment_logic_content_div_group").appendChild(new_componment_logic_content_div)
+
+    let new_componment_logic_content_div_text = document.createElement("div")
+    new_componment_logic_content_div_text.className ='componment_logic_content_div_text'
+    new_componment_logic_content_div_text.textContent =text
+    new_componment_logic_content_div_text.value = logic_type
+    console.log(new_componment_logic_content_div_text.value)
+    new_componment_logic_content_div.appendChild(new_componment_logic_content_div_text)
+
+}
+// logic_text_build("新增零件來幫您檢查~",0)
+// logic_text_build("bbb",1)
+
+// check_order_logic()
 
