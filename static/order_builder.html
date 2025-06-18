@@ -51,15 +51,8 @@
                 <div class="function_content_group">
 
                     <div class="function_content_group_left">
-                        <div class="component_group_div">
-                             <div class="component_group_div_scoll">
-                                <div class="component_group_div_title">選擇的零件</div>
-                            </div>
-                        </div>
-                    </div>
 
-
-                    <div class="function_content_group_middle">
+                        <!-- 儲存訂單block -->
                         <div class="order_build_group">
                             <div class="order_build_background">
                                 <div class="order_build_name">
@@ -76,27 +69,144 @@
                                     <div class="login_hint_text">登入後即可儲存配單與變更訂單名稱</div>
                                 </div>
 
-                                <div></div>
                             </div>
                         </div>
 
-                        <div class="case_img"></div>
+
+                        <!-- 選購的零件清單 -->
+                        <div class="component_group_div">
+                             <div class="component_group_div_scoll">
+                                <div class="component_group_div_title">選擇的零件</div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+
+
+
+                    <div class="function_content_group_middle">
+                        <!-- <div class="order_build_group">
+                            <div class="order_build_background">
+                                <div class="order_build_name">
+                                    <div class="order_build_name_title">訂單名稱：</div>
+                                    <input class="order_build_name_input"  value="我的配單001"></input>
+                                </div>
+                                <div class="total_price">
+                                    <div class="total_price_title">總價：</div>
+                                    <input class="total_price_number" disabled>元</input>
+                                </div>
+
+                                <div class="build_order_butt_div">
+                                    <button class="build_order_butt">儲存配單</button>
+                                    <div class="login_hint_text">登入後即可儲存配單與變更訂單名稱</div>
+                                </div>
+
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="case_img"></div> -->
+
+                        <!-- 零件類別選擇 -->
+                        <div class="filter_radio_group">
+                            <div class="filter_radio_group_title">選擇零件：</div>
+                            <div class="filter_radio_group_background">
+                                <input class="radio_select" type="radio" name="component_choice" id="cpu" value="cpu" checked  onchange="new_componment_build_compent_but()">
+                                <label for="cpu" class="radio_style">
+                                    <span class="radio_span">CPU</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="gpu" value="gpu"  onchange="new_componment_build_compent_but()">
+                                <label for="gpu" class="radio_style">
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()">顯示卡</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="mb" value="mb"  onchange="new_componment_build_compent_but()">
+                                <label for="mb" class="radio_style">
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()">主機板</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="ram" value="ram"  onchange="new_componment_build_compent_but()">
+                                <label for="ram" class="radio_style">
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()">記憶體</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="psu" value="psu"  onchange="new_componment_build_compent_but()">
+                                <label for="psu" class="radio_style">
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()">PSU</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="storage" value="storage"  onchange="new_componment_build_compent_but()">
+                                <label for="storage" class="radio_style">
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()">硬碟</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="cooler" value="cooler"  onchange="new_componment_build_compent_but()">
+                                <label for="cooler" class="radio_style">
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()">散熱器</span>
+                                </label>
+
+                                <input class="radio_select" type="radio" name="component_choice" id="case" value="case"  onchange="new_componment_build_compent_but()">
+                                <label for="case" class="radio_style">
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()">機殼</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+
+                        <!-- 配單零件篩選區 -->
+                        <dvi class="componment_filter_content">
+                            <dvi class="componment_filter_content_backgroud">
+                                <dvi class="componment_filter_content_title">零件篩選：</dvi>
+
+
+                                <dvi class="componment_filter_content_filter_div">
+                                    <dvi class="componment_filter_content_filter_text">品牌：</dvi>
+                                    <select class="componment_filter_content_filter_select" id="brand_select">
+                                        <option>請選擇</option>
+                                    </select>
+                                </dvi>
+
+
+
+                                <!-- <button class="filter_submit">確認</button> -->
+
+
+
+
+                            </dvi>
+                        </dvi>
+
+
+
+                        <!-- 配單邏輯提示 -->
+
+
+
+
+
                     </div>
 
 
 
                     <div class="function_content_group_right">
-                        <div class="filter_radio_group">
+                        <!-- <div class="filter_radio_group">
                             <div class="filter_radio_group_title">選擇零件：</div>
                             <div class="filter_radio_group_background">
-                                <input class="radio_select" type="radio" name="component_choice" id="cpu" value="cpu" checked  onchange="build_compent_but()">
+                                <input class="radio_select" type="radio" name="component_choice" id="cpu" value="cpu" checked  onchange="new_componment_build_compent_but()">
                                 <label for="cpu" class="radio_style">
-                                    <span class="radio_span">CPU</span>
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()" >CPU</span>
                                 </label>
 
-                                <input class="radio_select" type="radio" name="component_choice" id="gpu" value="gpu"  onchange="build_compent_but()">
+                                <input class="radio_select" type="radio" name="component_choice" id="gpu" value="gpu"  onchange="new_componment_build_compent_but()">
                                 <label for="gpu" class="radio_style">
-                                    <span class="radio_span" onchange="build_compent_but()">顯示卡</span>
+                                    <span class="radio_span" onchange="new_componment_build_compent_but()">顯示卡</span>
                                 </label>
 
                                 <input class="radio_select" type="radio" name="component_choice" id="mb" value="mb"  onchange="build_compent_but()">
@@ -130,7 +240,7 @@
                                 </label>
 
                             </div>
-                        </div>
+                        </div> -->
 
 
                         
@@ -198,6 +308,12 @@
 
                             </div>
                         </div>
+
+
+
+
+
+
                     </div>
                 </div>
 

@@ -46,6 +46,7 @@ async def user_center(request: Request, messageid):
 async def compenment_rank(request: Request):
 	return FileResponse("./static/beanchmark_score.html", media_type="text/html")
 
+
 ################### 留言 ##################
 # 所有留言討論
 @router.get("/api/MessageData", include_in_schema=False)
@@ -295,8 +296,8 @@ async def order_page(request: Request, number, Authorization: str = Header(None)
 @router.get("/api/order_detail_compent/{order_num}", include_in_schema=False)
 async def order_detail_compent(request: Request, order_num, Authorization: str = Header(None)):
     try:
-        # accountFunction=Auth()
-        # Auth_result = accountFunction.authenticator(Authorization)
+        accountFunction=Auth()
+        Auth_result = accountFunction.authenticator(Authorization)
 
         DB_tool = DB_Function()
         sql = 'select * from order_detail_table where order_id = %s'
@@ -320,11 +321,36 @@ async def order_detail_compent(request: Request, order_num, Authorization: str =
         return{"data":"驗證失敗",}
 
 
+
+#取得儲存訂單詳細資料
+@router.get("/api/SearchDetailByOrderID", include_in_schema=False)
+async def order_detail_compent(request: Request, order_id:int, Authorization: str = Header(None)):
+    try:
+        # 驗證登入狀態
+        accountFunction=Auth()
+        Auth_result = accountFunction.authenticator(Authorization)
+
+        datafunction = Component_Data()
+        case_data_dict = datafunction.get_order_components_fun(order_id)
+
+
+        return case_data_dict
+    
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+
+
+
+# 儲存配單
 @router.put("/api/update_order_detail_compent/{order_id}", include_in_schema=False)
 async def update_order_details(order_id: int, request: Request ,Authorization: str = Header(None)):
     try:
-        # accountFunction=Auth()
-        # Auth_result = accountFunction.authenticator(Authorization)
+        accountFunction=Auth()
+        Auth_result = accountFunction.authenticator(Authorization)
 
         data = await request.json()
         db = DB_Function()
@@ -335,7 +361,6 @@ async def update_order_details(order_id: int, request: Request ,Authorization: s
     except Exception as e:
         print(e)
         return{"data":"驗證失敗",}
-
 
 
 
@@ -355,14 +380,65 @@ async def CPUData(Authorization: str = Header(None)):
     except Exception as e:
         print(e)
         return{"data":"驗證失敗",}
+    
 
-#登入狀態驗證
+#篩選零件選項搜尋唯一值(uniqle)選項
+@router.get("/api/componment_filter_option", include_in_schema=False)
+async def Componment_Filter_option(column_index:int, table_index:int ,Authorization: str = Header(None)):
+    try:
+        datafunction = Component_Data()
+        CPU_data_dict = datafunction.componment_filter_option(column_index, table_index)
+		
+        return CPU_data_dict
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+
+#根據零件篩選條件搜尋
+@router.post("/api/componment_filter_data_search", include_in_schema=False)
+async def ComponmentFilterDataSearch(body = Body(None), Authorization: str = Header(None)):
+    try:
+        # data = json.loads(body)
+        data = body
+        datafunction = Component_Data()
+        filter_search_data = datafunction.SearchFilterData(data)
+		
+        return {"data":filter_search_data}
+
+    except Exception as e:
+        print(e)
+        return{"data":"獲取失敗",}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#CPU零件搜尋
 @router.get("/api/cpu_data", include_in_schema=False)
-async def CPUData(Authorization: str = Header(None)):
+async def CPUData(page:int, Authorization: str = Header(None)):
     try:
 
         datafunction = Component_Data()
-        CPU_data_dict = datafunction.CPU_data()
+        CPU_data_dict = datafunction.CPU_data(page)
 		
         return CPU_data_dict
 
@@ -372,13 +448,13 @@ async def CPUData(Authorization: str = Header(None)):
 
 
 @router.get("/api/gpu_data", include_in_schema=False)
-async def GPUData(Authorization: str = Header(None)):
+async def GPUData(page:int, Authorization: str = Header(None)):
     try:
         # accountFunction=Auth()
         # Auth_result = accountFunction.authenticator(Authorization)
 
         datafunction = Component_Data()
-        GPU_data_dict = datafunction.GPU_data()
+        GPU_data_dict = datafunction.GPU_data(page)
 
         return GPU_data_dict
 
@@ -388,13 +464,13 @@ async def GPUData(Authorization: str = Header(None)):
 
 
 @router.get("/api/ram_data", include_in_schema=False)
-async def RAM_data(Authorization: str = Header(None)):
+async def RAM_data(page:int, Authorization: str = Header(None)):
     try:
         # accountFunction=Auth()
         # Auth_result = accountFunction.authenticator(Authorization)
 
         datafunction = Component_Data()
-        ram_data_dict = datafunction.RAM_data()
+        ram_data_dict = datafunction.RAM_data(page)
 
         return ram_data_dict
 
@@ -404,13 +480,13 @@ async def RAM_data(Authorization: str = Header(None)):
 
 
 @router.get("/api/mb_data", include_in_schema=False)
-async def MB_data(Authorization: str = Header(None)):
+async def MB_data(page:int, Authorization: str = Header(None)):
     try:
         # accountFunction=Auth()
         # Auth_result = accountFunction.authenticator(Authorization)
 
         datafunction = Component_Data()
-        MB_data_dict = datafunction.MB_data()
+        MB_data_dict = datafunction.MB_data(page)
 
         return MB_data_dict
 
@@ -419,13 +495,13 @@ async def MB_data(Authorization: str = Header(None)):
 
 
 @router.get("/api/cooler_data", include_in_schema=False)
-async def cooler_data(Authorization: str = Header(None)):
+async def cooler_data(page:int, Authorization: str = Header(None)):
     try:
         # accountFunction=Auth()
         # Auth_result = accountFunction.authenticator(Authorization)
 
         datafunction = Component_Data()
-        cooler_data_dict = datafunction.cooler_data()
+        cooler_data_dict = datafunction.cooler_data(page)
 
         return cooler_data_dict
 
@@ -433,14 +509,14 @@ async def cooler_data(Authorization: str = Header(None)):
         return{"data":"驗證失敗"}
 
 
-@router.get("/api/PSU_data", include_in_schema=False)
-async def PSU_data(Authorization: str = Header(None)):
+@router.get("/api/psu_data", include_in_schema=False)
+async def Get_PSU_data(page:int, Authorization: str = Header(None)):
     try:
         # accountFunction=Auth()
         # Auth_result = accountFunction.authenticator(Authorization)
 
         datafunction = Component_Data()
-        PSU_data_dict = datafunction.PSU_data()
+        PSU_data_dict = datafunction.PSU_data(page)
 
         return PSU_data_dict
 
@@ -450,13 +526,13 @@ async def PSU_data(Authorization: str = Header(None)):
 
 
 @router.get("/api/storage_data", include_in_schema=False)
-async def storage_data(Authorization: str = Header(None)):
+async def storage_data(page:int, Authorization: str = Header(None)):
     try:
         # accountFunction=Auth()
         # Auth_result = accountFunction.authenticator(Authorization)
 
         datafunction = Component_Data()
-        storage_data_dict = datafunction.storage_data()
+        storage_data_dict = datafunction.storage_data(page)
 
         return storage_data_dict
 
@@ -467,17 +543,23 @@ async def storage_data(Authorization: str = Header(None)):
 
 
 @router.get("/api/case_data", include_in_schema=False)
-async def case_data(Authorization: str = Header(None)):
+async def case_data(page:int, Authorization: str = Header(None)):
     try:
         # accountFunction=Auth()
         # Auth_result = accountFunction.authenticator(Authorization)
 
         datafunction = Component_Data()
-        case_data_dict = datafunction.case_data()
+        case_data_dict = datafunction.case_data(page)
 
         return case_data_dict
 
     except Exception as e:
         print(e)
         return{"data":"驗證失敗"}
+
+
+
+
+
+
 
