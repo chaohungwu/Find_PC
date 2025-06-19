@@ -18,11 +18,11 @@ dbconfig = {
             "password": db_password,
 
             # 本機測試
-            "host": "localhost",
+            # "host": "localhost",
 
             # 部屬用
-            # "host": "mysql_db",
-            # "port": "3306"
+            "host": "mysql_db",
+            "port": "3306"
             }
 
 pool = mysql.connector.pooling.MySQLConnectionPool(pool_name="find_pc_db",
@@ -207,20 +207,37 @@ class DB_Function:
 
 
 
-    def DeleteOrder(self, sql, parameter, order_id):
+    def DeleteOrder(self, order_id):
         """
         刪除訂單
         """
         connection = pool.get_connection()
         cursor = connection.cursor()
-        delete_sql = sql
+        delete_sql = "DELETE FROM order_table WHERE id = %s;"
+        parameter = (order_id,)
+
         cursor.execute(delete_sql, parameter)
         connection.commit()
         cursor.close()
         connection.close()
 
+    def DeleteMessage(self, message_id):
+        """
+        刪除留言討論串
+        """
+        connection = pool.get_connection()
+        cursor = connection.cursor()
+        delete_sql = "DELETE FROM message_response_table WHERE message_id = %s;"
+        parameter = (message_id,)
+        cursor.execute(delete_sql, parameter)
+        connection.commit()
 
+        delete_sql2 = "DELETE FROM message_table WHERE id = %s;"
+        cursor.execute(delete_sql2, parameter)
+        connection.commit()
 
+        cursor.close()
+        connection.close()
 
 
     def UpdateOrderDetailsOnly(self, order_id: int, frontend_data: dict):
@@ -339,3 +356,8 @@ class DB_Function:
         except Exception as e:
             print("查詢訂單元件失敗：", e)
             return []
+        
+
+
+
+            

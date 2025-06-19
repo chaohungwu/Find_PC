@@ -9,6 +9,7 @@ async function get_order_data() {
     })
     let data = await response.json();
 
+
     try{
         document.querySelector(".user_order_content").remove()
 
@@ -33,6 +34,7 @@ async function get_order_data() {
             order_del_butt.className='order_del_butt'
             order_del_butt.id=`order_del_butt_${i}`
             order_del_butt.textContent='x'
+            order_del_butt.addEventListener("click", () => delete_order_butt(data[i]['id']))
             document.querySelector(`#order_del_butt_div_${i}`).appendChild(order_del_butt)
 
             let order_name_div = document.createElement("div")
@@ -133,6 +135,7 @@ async function get_message_data() {
         let MessageData_del_butt = document.createElement("button")
         MessageData_del_butt.className='MessageData_del_butt'
         MessageData_del_butt.id=`MessageData_del_butt_${i}`
+        MessageData_del_butt.addEventListener("click", () => delete_message_butt(MessageData[i]['id']))
         MessageData_del_butt.textContent='x'
         MessageData_del_butt_div.appendChild(MessageData_del_butt)
 
@@ -203,3 +206,34 @@ async function user_data() {
     }
 
 user_data()
+
+
+
+//  刪除配單
+async function delete_order_butt(order_id){
+    let response = await fetch(`/api/delete_order?order_id=${order_id}`,
+    {
+        method:'DELETE',
+        headers: {
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+    })
+    let result = await response.json();
+    alert("刪除訂單成功！");
+    window.location.reload();
+}
+
+
+//  刪除討論串
+async function delete_message_butt(message_id){
+    let response = await fetch(`/api/delete_message?message_id=${message_id}`,
+    {
+        method:'DELETE',
+        headers: {
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+    })
+    let result = await response.json();
+    alert("刪除討論串成功！");
+    window.location.reload();
+}

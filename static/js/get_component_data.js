@@ -16,6 +16,8 @@ async function GetComponmentInit(){
     });
 }
 
+
+
 GetComponmentInit()
 
 function nextPage(){
@@ -1576,6 +1578,7 @@ async function compent_select(){
 
 
 
+
 async function delete_compent_select(){
     console.log("這是按下的按鈕 ID：", this.id);
 
@@ -1589,8 +1592,8 @@ async function delete_compent_select(){
 
     price_dom.value = Number(o_price) - (Number(delete_num*delete_pre_price))
     document.querySelector(`#select_${delete_compent_id_part2}`).remove()
-
 }
+
 
 async function price_change_listen(){
     let newValue = this.value //變更後的新數量
@@ -1622,12 +1625,9 @@ async function order_save_buttCreate(){
         let user_info = data['data']
 
 
-        // 沒登入的話，跳登入框
+        // 沒登入的話
         if(user_info==null){
-            // document.querySelector(".build_order_butt").addEventListener("click", order_save)
-            // document.querySelector(".build_order_butt").disabled = true;
             document.querySelector(".build_order_butt").className = "build_order_butt_notLogin";
-            // document.querySelector(".build_order_butt").title = "登入後可以儲存訂單";
 
         
         // 有登入的話，可以直接儲存
@@ -1666,10 +1666,6 @@ async function order_save(){
         compent_type_list.push(compent_type)
         compent_id_list.push(compent_id)
         compent_num_list.push(compent_num)
-
-        // console.log(compent_type_list)
-        // console.log(compent_id_list)
-        // console.log(compent_num_list)
     }
 
     let response = await fetch("/api/order_save",// 要連結的連結
@@ -1690,7 +1686,18 @@ async function order_save(){
 
     console.log(data)
     window.alert(data["msg"])
-    window.location.href = `/`
+    let Authresponse = await fetch(`/api/auth`,
+    {
+        method:'GET',
+        headers: {
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    let user_info_data = await Authresponse.json();
+    let user_info = user_info_data['data']
+
+    window.location.href = `/user_info?userid=${user_info['id']}`;
+
 
 }
 

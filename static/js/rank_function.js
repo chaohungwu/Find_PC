@@ -4,7 +4,7 @@ let gpuChart = null;
 
 
 async function CPU_rank() {
-  const res = await fetch("/api/cpu_data", {
+  const res = await fetch("/api/get_all_cpu_data_for_rank", {
     headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
   });
   const data = await res.json();
@@ -13,7 +13,7 @@ async function CPU_rank() {
 }
 
 async function GPU_rank() {
-  const res = await fetch("/api/gpu_data", {
+  const res = await fetch("/api/get_all_gpu_data_for_rank", {
     headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` }
   });
   const data = await res.json();

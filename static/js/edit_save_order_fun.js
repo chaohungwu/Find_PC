@@ -124,23 +124,12 @@ async function get_order_detail_compent() {
     
         // 更新價格
         let price_dom = document.querySelector('.total_price_number');
-        price_dom.value = Number(price_dom.value) + Number(order_detail_data_price)
-
-
-
-
-
-
-
-
-
-
-
-
+        price_dom.value = Number(price_dom.value) + Number(order_detail_data_price)*Number(order_detail_data_quantity)
 
     }
 
 }
+
 
 get_order_detail_compent()
 
@@ -203,10 +192,32 @@ async function update_order_detail_compent(){
     window.location.href=`/user_info?userid=${user_id}`
 
     // return result
-
-
-
     // 再做儲存
     // console.log(result)
 
 }
+
+//  刪除配單
+async function delete_order(){
+    const order_id = location.href.split('=')[1]
+    let response = await fetch(`/api/delete_order?order_id=${order_id}`,
+    {
+        method:'DELETE',
+        headers: {
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+        },
+    })
+
+    let result = await response.json();
+}
+
+
+async function butt_event_add() {
+    let update_butt_dom = document.querySelector(".build_order_butt")
+    update_butt_dom.addEventListener("click", delete_order)
+}
+butt_event_add()
+
+
+
+
