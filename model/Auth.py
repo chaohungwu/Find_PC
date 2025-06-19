@@ -37,11 +37,11 @@ dbconfig = {
             "password": db_password,
             
             # 本機測試
-            "host": "localhost",
+            # "host": "localhost",
 
             # 部屬用
-            # "host": "mysql_db",
-            # "port": "3306"
+            "host": "mysql_db",
+            "port": "3306"
             }
 
 pool = mysql.connector.pooling.MySQLConnectionPool(pool_name="find_pc_db",

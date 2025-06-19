@@ -412,6 +412,31 @@ html, body {
     align-items: flex-end;
 }
 
+
+.edit_build_order_butt{
+    display: flex;
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border: 0;
+    background-color: rgb(246, 207, 108);
+    font-family: 'Noto Sans TC';
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow:  1px 1px 5px rgb(190, 190, 190);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.edit_build_order_butt:hover{
+    box-shadow:  1px 1px 5px rgb(160, 160, 160);
+    transition: all 0.1s ease-out;
+}
+
+
+
+
 .login_hint_text{
     display: flex;
     font-size: 12px;

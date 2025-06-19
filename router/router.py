@@ -304,14 +304,9 @@ async def order_detail_compent(request: Request, order_num, Authorization: str =
         parameter = (order_num,)
         search_order_detail_compent_result = DB_tool.search_column(sql,parameter)
 
-
         sql = 'select order_name from order_table where id = %s'
         parameter = (order_num,)
         order_name = DB_tool.search_column(sql,parameter)
-
-        # print("aaa"," ",order_name[0]['order_name'])
-        # print("aaa")
-        # print({"order_id":order_num, "order_name":order_name[0]['order_name'], "data":search_order_detail_compent_result})
 
         return {"order_id":order_num, "order_name":order_name, "data":search_order_detail_compent_result}
     
@@ -363,6 +358,48 @@ async def update_order_details(order_id: int, request: Request ,Authorization: s
         return{"data":"驗證失敗",}
 
 
+# 儲存配單刪除
+@router.delete("/api/delete_order", include_in_schema=False)
+async def update_order_details(order_id: int, request: Request ,Authorization: str = Header(None)):
+    try:
+        ## 驗證有無登入
+        accountFunction=Auth()
+        Auth_result = accountFunction.authenticator(Authorization)
+
+        ## 刪除訂單
+        db = DB_Function()
+        db.DeleteOrder(order_id)
+        return {"message": "刪除成功"}
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+# 留言刪除
+@router.delete("/api/delete_message", include_in_schema=False)
+async def update_order_details(message_id: int, request: Request ,Authorization: str = Header(None)):
+    try:
+        ## 驗證有無登入
+        accountFunction=Auth()
+        Auth_result = accountFunction.authenticator(Authorization)
+
+        ## 刪除訂單
+        db = DB_Function()
+        db.DeleteMessage(message_id)
+        return {"message": "刪除成功"}
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
+
+
+
+
+
+
+
+
 
 
 #============================零件 API #============================
@@ -381,6 +418,9 @@ async def CPUData(Authorization: str = Header(None)):
         print(e)
         return{"data":"驗證失敗",}
     
+
+
+
 
 #篩選零件選項搜尋唯一值(uniqle)選項
 @router.get("/api/componment_filter_option", include_in_schema=False)
@@ -420,12 +460,34 @@ async def ComponmentFilterDataSearch(body = Body(None), Authorization: str = Hea
 
 
 
+#CPU零件搜尋給排行
+@router.get("/api/get_all_cpu_data_for_rank", include_in_schema=False)
+async def get_all_cpu_data_for_rank(Authorization: str = Header(None)):
+    try:
+        DBfunction = DB_Function()
+        sql = "select * from cpu_table;"
+        CPU_data_dict = DBfunction.search_column(sql)
 
+        return CPU_data_dict
 
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
 
+#GPU零件搜尋給排行
+@router.get("/api/get_all_gpu_data_for_rank", include_in_schema=False)
+async def get_all_gpu_data_for_rank(Authorization: str = Header(None)):
+    try:
 
+        DBfunction = DB_Function()
+        sql = "select * from gpu_table;"
+        GPU_data_dict = DBfunction.search_column(sql)
 
+        return GPU_data_dict
 
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗",}
 
 
 
@@ -559,6 +621,20 @@ async def case_data(page:int, Authorization: str = Header(None)):
 
 
 
+@router.get("/api/all_data_search", include_in_schema=False)
+async def all_componment_data(page:int, Authorization: str = Header(None)):
+    try:
+        # accountFunction=Auth()
+        # Auth_result = accountFunction.authenticator(Authorization)
+
+        datafunction = Component_Data()
+        case_data_dict = datafunction.case_data(page)
+
+        return case_data_dict
+
+    except Exception as e:
+        print(e)
+        return{"data":"驗證失敗"}
 
 
 
